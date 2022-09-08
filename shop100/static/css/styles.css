@@ -1,0 +1,21 @@
+
+head{
+    font-size: 40px;
+}
+
+body{
+    background-color: bisque;
+    font-family: "Yu Gothic UI Semibold";
+    margin-left: 500px;
+    margin-right: 400px;
+}
+
+p_hello{
+    font-size: 30px;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}
+
+p_help{
+    font-size: 18px;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}

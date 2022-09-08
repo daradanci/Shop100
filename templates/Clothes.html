@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Тип одежды №{{ data.id }}{% endblock %}
+
+{% block content %}
+    <div>Информация о типе одежды №{{ data.id }}</div>
+    {% for model in data.models %}
+        <li>{{ model.name }} <br>Цена: {{ model.price }} <br> Производитель: {{ model.producer }}</li>
+        <img src="{% static  model.img  %}" height="200" alt="photo {{ data.id }}">
+    {% empty %}
+        <li>Список пуст. Раскуплено!</li>
+    {% endfor %}
+{% endblock %}
+

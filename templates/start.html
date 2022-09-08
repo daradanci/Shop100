@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Модная одежда{% endblock %}
+
+{% block content %}
+<p_hello>        Добро пожаловать в Fashion Boutique #100!</p_hello>
+<p_help> <br> Пожалуйста, выберите категорию товара.</p_help>
+<ul>
+    {% for type in data.types %}
+        <li><a href="{% url 'type_url' type.id %}">{{ type.title }}</a> </li>
+    {% empty %}
+        <li>Список пуст. Раскуплено!</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
