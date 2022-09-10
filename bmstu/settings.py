@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop100.apps.Shop100Config',
+
 ]
 
 MIDDLEWARE = [
@@ -74,14 +75,18 @@ WSGI_APPLICATION = 'bmstu.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Shop100_db',
+        'USER': 'Qiqi',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': 3306, # Стандартный порт MySQL
+        'OPTIONS': {'charset': 'utf8'},
+        'TEST_CHARSET': 'utf8',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

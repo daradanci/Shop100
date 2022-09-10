@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Start),
     path('type/<int:id>/', views.GetClothes, name='type_url'),
-
+    path('type/<int:id>/<int:modelid>', views.GetSizes, name='model_url'),
+    path('test/', views.rangeList)
 ]

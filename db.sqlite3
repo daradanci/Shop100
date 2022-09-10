@@ -1,0 +1,15 @@
+
+import MySQLdb
+
+db = MySQLdb.connect(
+    host="Shop100",
+    user="dante",
+    passwd="123",
+    db="Shop100_db"
+)
+
+c=db.cursor()
+c.execute("INSERT INTO range (rangeName) VALUES (%s);", ('Платья'))
+db.commit()
+c.close()
+db.close()

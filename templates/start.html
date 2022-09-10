@@ -6,11 +6,18 @@
 <p_hello>        Добро пожаловать в Fashion Boutique #100!</p_hello>
 <p_help> <br> Пожалуйста, выберите категорию товара.</p_help>
 <ul>
-    {% for type in data.types %}
-        <li><a href="{% url 'type_url' type.id %}">{{ type.title }}</a> </li>
+{#    {% for type in data.types %}#}
+{#        <li><a href="{% url 'type_url' type.id %}">{{ type.title }}</a> </li>#}
+{#    {% empty %}#}
+{#        <li>Список пуст. Раскуплено!</li>#}
+{#    {% endfor %}#}
+
+    {% for type in data %}
+        <li><a href="{% url 'type_url' type.rangeid %}">{{ type.rangename }}</a> </li>
     {% empty %}
-        <li>Список пуст. Раскуплено!</li>
+        <li>Список пуст! O_o</li>
     {% endfor %}
+
 </ul>
 
 {% endblock %}

@@ -2,13 +2,15 @@
 {% load static %}
 
 
-{% block title %}Тип одежды №{{ data.id }}{% endblock %}
+{% block title %}Fashion boutique{% endblock %}
 
 {% block content %}
-    <div>Информация о типе одежды №{{ data.id }}</div>
+    <div>{{ data.range.rangename }}</div>
+
     {% for model in data.models %}
-        <li>{{ model.name }} <br>Цена: {{ model.price }} <br> Производитель: {{ model.producer }}</li>
-        <img src="{% static  model.img  %}" height="200" alt="photo {{ data.id }}">
+        <li><a href="{% url  'model_url' data.range.rangeid model.modelid %}">{{ model.modelname }} </a>
+        <br>Цена: {{ model.price }} руб. <br> Производитель: {{ model.producer }}</li>
+        <img src="{% static model.image  %}" height="200" alt="photo {{ model.modelid }}">
     {% empty %}
         <li>Список пуст. Раскуплено!</li>
     {% endfor %}
