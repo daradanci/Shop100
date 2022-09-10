@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Fashion boutique{% endblock %}
+
+{% block content %}
+    <div>{{ data.model.modelname }}<br>Цена: {{ data.model.price }} руб. <br> Производитель: {{ data.model.producer }}</div>
+    <img src="{% static data.model.image  %}" height="500" alt="photo {{ model.modelid }}">
+    <div>Доступные размеры:</div>
+    {% for item in data.stock %}
+        <li>{{ item.size }} в количестве {{ item.amount }} шт.</li>
+    {% empty %}
+        <li>Список пуст. Раскуплено!</li>
+    {% endfor %}
+{% endblock %}
+
