@@ -19,3 +19,17 @@ p_help{
     font-size: 18px;
     font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
 }
+
+.btn {
+  border: none; /* Убирает рамки */
+  color: #fff; /* Цвет текста на кнопке */
+  padding: 12px 26px; /* Добавляет некоторые отступы */
+  cursor: pointer; /* Добавляет курсор указатель при наведении */
+}
+
+.buy_button{
+    background-color: indianred;
+}
+.buy_button:hover{
+    background-color: brown;
+}

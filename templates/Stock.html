@@ -8,11 +8,33 @@
     <div>{{ data.model.modelname }}<br>Цена: {{ data.model.price }} руб. <br> Производитель: {{ data.model.producer }}</div>
     <img src="{% static data.model.image  %}" height="500" alt="photo {{ model.modelid }}">
     <div>Доступные размеры:</div>
-    {% for item in data.stock %}
-        <li>{{ item.size }} в количестве {{ item.amount }} шт.</li>
-    {% empty %}
-        <li>Список пуст. Раскуплено!</li>
-    {% endfor %}
+
+    {% if not data.stock %}
+        <div>Размеров нет.</div>
+    {% else %}
+
+{#    <form action=buy method="post" name="buy_form">#}
+    <p><select name="size_list" id="size_list">
+        <option value="">Выберите размер</option>
+      {% for item in data.stock %}
+            <option value="{{ item.size }}">{{ item.size }}  ({{ item.amount }} шт.)</option>
+      {% endfor %}
+    </select>
+    <input id="buy_button" class="buy_button" type="submit" value="Купить!" onclick="buy()"></p>
+    {% endif %}
+{#    </form>#}
+
+    <script>
+        function buy() {
+            var size=document.getElementById('size_list').value
+            if(size) {
+                document.location.replace(document.location+"/buy/"+ size)
+                alert("Куплено! {{ data.model.modelname }} - " + size)
+            }
+        }
+    </script>
+
+
 
    {% endblock %}
 {% block button_back %}

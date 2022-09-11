@@ -20,7 +20,10 @@ from shop100 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Start),
+    path('type/', views.Start),
     path('type/<int:id>/', views.GetClothes, name='type_url'),
     path('type/<int:id>/<int:modelid>', views.GetSizes, name='model_url'),
-    path('test/', views.rangeList)
+    path('type/<int:id>/<int:modelid>/buy/<str:size>',views.Buy, name='item_url'),
+    path('test/', views.rangeList),
+
 ]

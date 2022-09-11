@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, reverse
+from django.http import HttpResponse, HttpResponseRedirect
 from datetime import date
 #from database import cloth_types, models
 from shop100.models import Range, Models, Stock
@@ -20,6 +20,7 @@ def Start(request):
     })
 
 def GetClothes(request, id):
+
     # return render(request, 'Clothes.html', {'data' : {
     #     'current_date': date.today(),
     #     'id': id,
@@ -45,7 +46,7 @@ def GetModels(id):
 
 
 def GetStock(id):
-    return Stock.objects.filter(idmodel=id)
+    return Stock.objects.filter(idmodel=id, amount__gt=0)
 
 def rangeList(request):
     print(Range.objects.all())
@@ -53,12 +54,18 @@ def rangeList(request):
         Range.objects.all()
     })
 
+def Buy(request, id, modelid, size):
+    item = Stock.objects.get(idmodel=modelid, size=size)
+    item.amount=item.amount-1
+    item.save()
+    return HttpResponseRedirect(reverse('model_url', args=[id,modelid]))
+
+
 cloth_types = [
             {'title': 'Верхняя одежда', 'id': 1},
             {'title': 'Костюмы', 'id': 2},
             {'title': 'Обувь', 'id': 3},
         ]
-
 models = [
     {'type': 1, 'stock':
      [
